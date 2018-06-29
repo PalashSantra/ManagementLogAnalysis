@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1496764225256.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C2E3CDFF",
+    "lastKnownWriteTime" : 736391040755302400,
+    "last_content_update" : 1496764225256,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "98h5656l8g",
+        "caption" : "InitialTraining",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=InitialTraining&cache_key=98h5656l8g",
+        "displayedObservations" : 299,
+        "environment" : "",
+        "object" : "InitialTraining",
+        "totalObservations" : 299,
+        "variables" : 9
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

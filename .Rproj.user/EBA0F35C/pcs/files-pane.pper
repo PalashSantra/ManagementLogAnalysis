@@ -1,0 +1,9 @@
+{
+    "path" : "~/ManagementLogAnalysis",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

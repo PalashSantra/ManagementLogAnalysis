@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "source(\"BuildClassifier.R\")\nsource(\"CentroidCalculation.R\")\n\n#library(readxl)\ninstalllibrary(randomForest)\nlibrary(randomForest)\nlibrary(caret)\n\nCentroid<-function(Touples){\n  Cen <- c()\n  CenAMU <- mean(Touples$AMU, na.rm = TRUE)\n  CenAVMU <- mean(Touples$AVMU, na.rm = TRUE)\n  CenADU <- mean(Touples$ADU, na.rm = TRUE)\n  CenCLS <- mean(Touples$CLS, na.rm = TRUE)\n  CenTC <- mean(Touples$TC, na.rm = TRUE)\n  CenRL <- mean(Touples$RL, na.rm = TRUE)\n  CenGL <- mean(Touples$GL, na.rm = TRUE)\n  Cen <- c(CenAMU,CenAVMU,CenADU,CenCLS,CenTC,CenRL,CenGL)\n  return(Cen);\n}\n\n# Build_ClassifierModel_RandomForest<- function(TrainingDataset,NumTree=500){\n#   TrainingDataset$Class=factor(TrainingDataset$Class)\n#   M <- randomForest(TrainingDataset$Class ~ TrainingDataset$AMU\n#                     +TrainingDataset$ADU+TrainingDataset$AVMU\n#                     +TrainingDataset$RL+TrainingDataset$GL\n#                     +TrainingDataset$CLS+TrainingDataset$TC, \n#                     data = TrainingDataset,ntree=NumTree)\n#   return(M)\n# }\n\n\n#Import Dataset\nmanagement_dataset <- read_excel(\"H:/management dataset.xlsx\", \n                                 col_types = c(\"text\", \"numeric\", \"numeric\", \n                                               \"numeric\", \"numeric\", \"numeric\", \n                                               \"numeric\", \"numeric\", \"text\"))\nmgmnt=management.dataset\nTrainingMalicious<- mgmnt[mgmnt$Class == \"Malicious\",2:9]\nTrainingNotMalicious<- mgmnt[mgmnt$Class == \"Not Malicious\",2:9]\nTrainingPartiallyMalicious<- mgmnt[mgmnt$Class == \"Partially Malicious\",2:9]\n\nTestingMalicious=mgmnt[mgmnt$Class == \"Malicious\",2:8]\n\nCentroidMalicious <- Centroid(TrainingMalicious[,1:7])\nCentroidNotMalicious <- Centroid(TrainingNotMalicious[,1:7])\nCentroidPartialMalicious <- Centroid(TrainingPartiallyMalicious[,1:7])\n\n#Build_ClassifierModel_RandomForest(management_dataset,600)\n\nmgmnt$Class=factor(mgmnt$Class)\nM <- randomForest(mgmnt$Class ~ mgmnt$AMU\n                  +mgmnt$ADU+mgmnt$AVMU\n                  +mgmnt$RL+mgmnt$GL\n                  +mgmnt$CLS+mgmnt$TC, \n                  data = mgmnt,ntree=500)\n\nM <- randomForest(Class ~ AMU\n                  +ADU+AVMU\n                  +RL+GL\n                  +CLS+TC, \n                  data = InitialTraining,ntree=500)\n\npredict(M,Testing1)\n",
+    "created" : 1496763150921.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "965470192",
+    "id" : "4EE22C5E",
+    "lastKnownWriteTime" : 1496772602,
+    "last_content_update" : 1496772602874,
+    "path" : "~/ManagementLogAnalysis/MainFunction.R",
+    "project_path" : "MainFunction.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
